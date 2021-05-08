@@ -1,0 +1,32 @@
+buildscript {
+    ext {
+        assertjVersion = '3.19.0'
+        igniteVersion = '2.10.0'
+        vertxVersion = '4.0.3'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'com.github.ivpal'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.apache.ignite:ignite-core:${igniteVersion}"
+    implementation "io.vertx:vertx-core:${vertxVersion}"
+
+    testImplementation "io.vertx:vertx-junit5:${vertxVersion}"
+    testImplementation "io.vertx:vertx-ignite:${vertxVersion}"
+    testImplementation "org.assertj:assertj-core:${assertjVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
